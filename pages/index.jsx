@@ -296,6 +296,7 @@ export default function Home({
                     <a
                       href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
                       target="_blank"
+                      rel="noreferrer"
                       className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
                     >
                       <span className="flex text-white text-bold">
@@ -351,6 +352,7 @@ export default function Home({
               <a
                 href={data.instagram}
                 target="_blank"
+                rel="noreferrer"
                 className="rounded-full p-2 mt-3 bg-coklat"
               >
                 <FontAwesomeIcon
@@ -416,6 +418,7 @@ export default function Home({
       <a
         href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
         target="_blank"
+        rel="noreferrer"
         className="fixed bottom-0 right-0 mr-4 mb-4 z-10 w-36 h-10 bg-coklat rounded-sm flex justify-center items-center"
       >
         <span className="flex text-white text-bold">

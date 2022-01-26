@@ -68,7 +68,7 @@ export default function Home() {
       <Head>
         <meta name="keywords" content="tes" />
       </Head>
-      <nav className="fixed z-10 w-full bg-hitam border-gray-200 px-10 py-5 max-w-screen-2xl">
+      <nav className="fixed z-10 w-full bg-hitam border-gray-200 px-10 max-lg:px-6 py-5 max-w-screen-2xl">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a href="#" className="flex">
             <span className="self-center text-lg font-semibold whitespace-nowrap text-white">
@@ -105,7 +105,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('home')}
-                  className="block py-2 pr-4 pl-3 rounded md:bg-transparent md:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 rounded md:bg-transparent md:text-white md:p-0"
                   aria-current="page"
                 >
                   Home
@@ -114,7 +114,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('about')}
-                  className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
                 >
                   About
                 </a>
@@ -122,7 +122,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('service')}
-                  className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
                 >
                   Services
                 </a>
@@ -130,7 +130,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('product')}
-                  className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
                 >
                   Product
                 </a>
@@ -138,7 +138,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('team')}
-                  className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
                 >
                   Team
                 </a>
@@ -146,7 +146,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('gallery')}
-                  className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
                 >
                   Gallery
                 </a>
@@ -154,7 +154,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('contact')}
-                  className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
+                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
                 >
                   Contact
                 </a>
@@ -168,19 +168,19 @@ export default function Home() {
         className="max-w-screen-2xl space-x-6 max-lg:space-x-0 px-12 max-lg:px-6 pt-28 max-lg:pt-24 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
       >
         <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
-          <h1 className="text-5xl text-coklat font-bold">
+          <h1 className="text-5xl text-white font-bold">
             One stop solution for the finest coconut product from Indonesia
           </h1>
-          <p className="mt-8 text-lg">
+          <p className="mt-8 text-lg text-white">
             Akrasara is taken from the Sanskrit language derived from the word
             Askara which means Light, the State of Indonesia is known for having
             fertile soil and abundant natural resources from various sectors.
           </p>
           <div className="w-full flex space-x-4 mt-6">
-            <a className="rounded-full text-white py-2.5 px-10 bg-coklat">
+            <a className="rounded-full text-black py-2.5 px-10 bg-white">
               About Us
             </a>
-            <a className="rounded-full text-white py-2.5 px-10 bg-coklat">
+            <a className="rounded-full text-black py-2.5 px-10 bg-white">
               Our Product
             </a>
           </div>
@@ -189,7 +189,7 @@ export default function Home() {
           <Swiper
             effect={'fade'}
             navigation={true}
-            className="relative w-96 max-lg:w-full h-full max-lg:h-45rem max-lg:30rem rounded-2xl overflow-hidden"
+            className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden"
           >
             <SwiperSlide>
               <div className="w-full h-full">
@@ -229,7 +229,7 @@ export default function Home() {
         className="max-w-screen-2xl px-12 max-lg:px-6 pt-12 space-x-6 max-lg:space-x-0 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
       >
         <div className="w-1/2 max-lg:w-full h-full flex justify-center">
-          <div className="relative w-96 max-lg:w-full h-full max-lg:h-45rem max-lg:30rem rounded-2xl overflow-hidden">
+          <div className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden">
             <Image
               src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
               alt="Delightful"
@@ -239,8 +239,8 @@ export default function Home() {
           </div>
         </div>
         <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
-          <h2 className="text-5xl text-coklat font-bold">About Us</h2>
-          <p className="mt-8 text-lg">
+          <h2 className="text-5xl text-white font-bold">About Us</h2>
+          <p className="mt-8 text-lg text-white">
             Akrasara is taken from the Sanskrit language derived from the word
             Askara which means Light, the State of Indonesia is known for having
             fertile soil and abundant natural resources from various sectors.
@@ -260,8 +260,8 @@ export default function Home() {
         data-slug="service"
         className="px-20 max-lg:px-6 pt-12 w-full h-full max-w-screen-2xl"
       >
-        <h2 className="text-center text-coklat text-4xl">Our Key Feature</h2>
-        <div className="w-full mt-20 grid max-lg:flex max-lg:flex-col grid-cols-2 gap-20">
+        <h2 className="text-center text-white text-4xl">Our Key Feature</h2>
+        <div className="text-white w-full mt-20 grid max-lg:flex max-lg:flex-col grid-cols-2 gap-20">
           <div className="w-full flex flex-col text-center items-center h-auto">
             <Image
               src="/integrity.png"
@@ -270,7 +270,7 @@ export default function Home() {
               width={56}
               height={56}
             />
-            <h4 className="text-coklat text-2xl mt-5">Innovation</h4>
+            <h4 className="text-white text-2xl mt-5">Innovation</h4>
             <p className="text-lg mt-2 max-w-md">
               For us, integrity is the quality of having a strong ethical
               principle, which followed at all times. Honesty and trust are at
@@ -286,7 +286,7 @@ export default function Home() {
               width={56}
               height={56}
             />
-            <h4 className="text-coklat text-2xl mt-5">COMMITMENT</h4>
+            <h4 className="text-white text-2xl mt-5">COMMITMENT</h4>
             <p className="text-lg mt-2 max-w-md">
               Commitment is our promise or firm decision to do our business,
               where we will continue to provide the best to our customers as
@@ -301,7 +301,7 @@ export default function Home() {
               width={56}
               height={56}
             />
-            <h4 className="text-coklat text-2xl mt-5">QUALITY</h4>
+            <h4 className="text-white text-2xl mt-5">QUALITY</h4>
             <p className="text-lg mt-2 max-w-md">
               In our mutual thoughts, quality is not just about offering a
               product or service that exceeds the standard, but it’s also about
@@ -317,7 +317,7 @@ export default function Home() {
               width={56}
               height={56}
             />
-            <h4 className="text-coklat text-2xl mt-5">INNOVATION</h4>
+            <h4 className="text-white text-2xl mt-5">INNOVATION</h4>
             <p className="text-lg mt-2 max-w-md">
               Innovation means the creation, development and implementation of
               new products, processes or services with the aim of increasing
@@ -331,12 +331,12 @@ export default function Home() {
         data-slug="product"
         className="max-w-screen-2xl px-16 max-lg:px-6 mt-16"
       >
-        <h2 className="font-bold text-coklat text-5xl">Our Product</h2>
+        <h2 className="font-bold text-white text-5xl">Our Product</h2>
         <Swiper className="relative w-full h-full mt-20 flex">
           <SwiperSlide>
             <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
               <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                <h2 className="text-5xl text-coklat font-bold">
+                <h2 className="text-5xl text-white font-bold">
                   Semi Husked Coconut
                 </h2>
                 <p className="mt-8 text-lg">
@@ -347,7 +347,7 @@ export default function Home() {
                   commodity, especially in Sumatra Island.
                 </p>
                 <div className="inline-flex mt-6">
-                  <a className="rounded-full text-white py-2.5 px-10 bg-coklat">
+                  <a className="rounded-full text-black py-2.5 px-10 bg-white">
                     Contact Us
                   </a>
                 </div>
@@ -367,7 +367,7 @@ export default function Home() {
           <SwiperSlide>
             <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
               <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                <h2 className="text-5xl text-coklat font-bold">
+                <h2 className="text-5xl text-white font-bold">
                   Semi Husked Coconut
                 </h2>
                 <p className="mt-8 text-lg">
@@ -378,7 +378,7 @@ export default function Home() {
                   commodity, especially in Sumatra Island.
                 </p>
                 <div className="inline-flex mt-6">
-                  <a className="rounded-full text-white py-2.5 px-10 bg-coklat">
+                  <a className="rounded-full text-black py-2.5 px-10 bg-white">
                     Contact Us
                   </a>
                 </div>
@@ -398,7 +398,7 @@ export default function Home() {
           <SwiperSlide>
             <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
               <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                <h2 className="text-5xl text-coklat font-bold">
+                <h2 className="text-5xl text-white font-bold">
                   Semi Husked Coconut
                 </h2>
                 <p className="mt-8 text-lg">
@@ -409,7 +409,7 @@ export default function Home() {
                   commodity, especially in Sumatra Island.
                 </p>
                 <div className="inline-flex mt-6">
-                  <a className="rounded-full text-white py-2.5 px-10 bg-coklat">
+                  <a className="rounded-full text-black py-2.5 px-10 bg-white">
                     Contact Us
                   </a>
                 </div>
@@ -432,7 +432,7 @@ export default function Home() {
         data-slug="team"
         className="px-20 max-lg:px-6 py-12 w-full h-full max-w-screen-2xl"
       >
-        <h2 className="text-center text-coklat text-4xl">Our Teams</h2>
+        <h2 className="text-center text-white text-4xl">Our Teams</h2>
         <div className="flex max-lg:flex-col mt-16 justify-center space-x-12 max-lg:space-x-0 max-lg:space-y-12 w-full">
           <div className="flex flex-col items-center justify-center w-56 max-lg:w-full h-64">
             <div className="relative overflow-hidden w-36 h-36 rounded-full">
@@ -444,7 +444,7 @@ export default function Home() {
                 objectPosition="top"
               />
             </div>
-            <span className="font-bold mt-6 text-coklat text-lg">
+            <span className="font-bold mt-6 text-white text-lg">
               Muhammad Sartibi
             </span>
             <span>Founder</span>
@@ -459,7 +459,7 @@ export default function Home() {
                 objectPosition="top"
               />
             </div>
-            <span className="font-bold mt-6 text-coklat text-lg">
+            <span className="font-bold mt-6 text-white text-lg">
               Haikal Fikri
             </span>
             <span>Co Founder</span>
@@ -470,14 +470,14 @@ export default function Home() {
         data-slug="gallery"
         className="px-20 max-lg:px-6 pt-12 pb-24 w-full h-full max-w-screen-2xl"
       >
-        <h2 className="text-center text-coklat text-4xl">Gallery</h2>
-        <h3 className="text-center font-bold text-coklat text-4xl">
+        <h2 className="text-center text-white text-4xl">Gallery</h2>
+        <h3 className="text-center font-bold text-white text-4xl">
           Work Documentation
         </h3>
         <Swiper
           spaceBetween={useMediaQuery('(max-width: 900px)') ? 0 : 30}
           slidesPerView={useMediaQuery('(max-width: 900px)') ? 1 : 3}
-          className="relative mt-12 w-full h-30rem max-lg:h-45rem max-md:h-30rem max-lg:rounded-2xl max-lg:overflow-hidden"
+          className="relative mt-12 w-full h-30rem max-lg:h-40rem max-md:h-30rem max-lg:rounded-2xl max-lg:overflow-hidden"
         >
           <SwiperSlide>
             <div className="relative w-full max-lg:w-full h-full rounded-2xl max-lg:rounded-none overflow-hidden">
@@ -555,7 +555,7 @@ export default function Home() {
         data-slug="contact"
         className="max-w-screen-2xl px-12 py-9 bg-hitam text-white"
       >
-        <span className="font-bold text-coklat text-2xl">Contacts</span>
+        <span className="font-bold text-white text-2xl">Contacts</span>
         <div className="flex flex-col justify-start space-y-4 mt-5">
           <div className="">
             <span className="block max-w-sm">

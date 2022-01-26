@@ -12,11 +12,25 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import client from '@/helpers/sanity/client'
+import BlockContent from '@sanity/block-content-to-react'
+import urlFor from '@/helpers/sanity/urlFor'
 
 // install Swiper modules
 SwiperCore.use([EffectFade, Navigation, Pagination])
 
-export default function Home() {
+export default function Home({
+  homeAPI,
+  aboutAPI,
+  serviceAPI,
+  productAPI,
+  teamAPI,
+  galleryAPI,
+  contactAPI,
+}) {
+  const [home] = homeAPI
+  const [about] = aboutAPI
+  const [contact] = contactAPI
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const canonicalLink = `https://website.site${
@@ -170,13 +184,9 @@ export default function Home() {
         className="max-w-screen-2xl space-x-6 max-lg:space-x-0 px-12 max-lg:px-6 pt-28 max-lg:pt-24 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
       >
         <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
-          <h1 className="text-5xl text-white font-bold">
-            One stop solution for the finest coconut product from Indonesia
-          </h1>
+          <h1 className="text-5xl text-white font-bold">{home.title}</h1>
           <p className="mt-8 text-lg text-white">
-            Akrasara is taken from the Sanskrit language derived from the word
-            Askara which means Light, the State of Indonesia is known for having
-            fertile soil and abundant natural resources from various sectors.
+            <BlockContent blocks={home.description} />
           </p>
           <div className="w-full flex space-x-4 mt-6">
             <a
@@ -199,36 +209,18 @@ export default function Home() {
             navigation={true}
             className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden"
           >
-            <SwiperSlide>
-              <div className="w-full h-full">
-                <Image
-                  src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                  alt="Delightful"
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="w-full h-full">
-                <Image
-                  src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                  alt="Delightful"
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="w-full h-full">
-                <Image
-                  src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                  alt="Delightful"
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </SwiperSlide>
+            {home.image.map((data, id) => (
+              <SwiperSlide key={id}>
+                <div className="w-full h-full">
+                  <Image
+                    src={urlFor(data).url()}
+                    alt="Agraskara"
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
@@ -239,8 +231,8 @@ export default function Home() {
         <div className="w-1/2 max-lg:w-full h-full flex justify-center">
           <div className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden">
             <Image
-              src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-              alt="Delightful"
+              src={urlFor(about.image).url()}
+              alt="Agraskara"
               layout="fill"
               objectFit="cover"
             />
@@ -249,18 +241,7 @@ export default function Home() {
         <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
           <h2 className="text-5xl text-white font-bold">About Us</h2>
           <p className="mt-8 text-lg text-white">
-            Akrasara is taken from the Sanskrit language derived from the word
-            Askara which means Light, the State of Indonesia is known for having
-            fertile soil and abundant natural resources from various sectors.
-            Riau Province One of the areas that is part of the existing area and
-            has potential which has been known to have a large area of ​​oil
-            palm production. however we would like to introduce that Riau also
-            has other sectors that have the same potential. our mission is to
-            help local farmers to bring and expand their range of produce from
-            agriculture to grade level We are committed to providing customers
-            with the highest quality and value products. The agraskara team
-            strives to continuously develop product results and maintain trust,
-            transparency and communication with all business partners
+            <BlockContent blocks={about.description} />
           </p>
         </div>
       </div>
@@ -270,203 +251,72 @@ export default function Home() {
       >
         <h2 className="text-center text-white text-4xl">Our Key Feature</h2>
         <div className="text-white w-full mt-20 grid max-lg:flex max-lg:flex-col grid-cols-2 gap-20">
-          <div className="w-full flex flex-col text-center items-center h-auto">
-            <Image
-              src="/integrity.png"
-              alt="Delightful"
-              layout="fixed"
-              width={56}
-              height={56}
-            />
-            <h4 className="text-white text-2xl mt-5">Innovation</h4>
-            <p className="text-lg mt-2 max-w-md">
-              For us, integrity is the quality of having a strong ethical
-              principle, which followed at all times. Honesty and trust are at
-              the core of integrity. Consistency in integrity is the key of our
-              business.
-            </p>
-          </div>
-          <div className="w-full flex flex-col text-center items-center h-auto">
-            <Image
-              src="/integrity.png"
-              alt="Delightful"
-              layout="fixed"
-              width={56}
-              height={56}
-            />
-            <h4 className="text-white text-2xl mt-5">COMMITMENT</h4>
-            <p className="text-lg mt-2 max-w-md">
-              Commitment is our promise or firm decision to do our business,
-              where we will continue to provide the best to our customers as
-              long as possible.
-            </p>
-          </div>
-          <div className="w-full flex flex-col text-center items-center h-auto">
-            <Image
-              src="/integrity.png"
-              alt="Delightful"
-              layout="fixed"
-              width={56}
-              height={56}
-            />
-            <h4 className="text-white text-2xl mt-5">QUALITY</h4>
-            <p className="text-lg mt-2 max-w-md">
-              In our mutual thoughts, quality is not just about offering a
-              product or service that exceeds the standard, but it’s also about
-              the reputation we gain for consistently delivering a customer
-              experience, that is “above and beyond”.
-            </p>
-          </div>
-          <div className="w-full flex flex-col text-center items-center h-auto">
-            <Image
-              src="/integrity.png"
-              alt="Delightful"
-              layout="fixed"
-              width={56}
-              height={56}
-            />
-            <h4 className="text-white text-2xl mt-5">INNOVATION</h4>
-            <p className="text-lg mt-2 max-w-md">
-              Innovation means the creation, development and implementation of
-              new products, processes or services with the aim of increasing
-              efficiency and effectiveness to win the competition and gain
-              customers satisfaction.
-            </p>
-          </div>
+          {serviceAPI.map((data, id) => (
+            <div
+              key={id}
+              className="w-full flex flex-col text-center items-center h-auto"
+            >
+              <Image
+                src={urlFor(data.image).url()}
+                alt="Delightful"
+                layout="fixed"
+                width={56}
+                height={56}
+              />
+              <h4 className="text-white text-2xl mt-5">{data.title}</h4>
+              <p className="text-lg mt-2 max-w-md">
+                <BlockContent blocks={data.description} />
+              </p>
+            </div>
+          ))}
         </div>
       </div>
       <div
         data-slug="product"
-        className="max-w-screen-2xl px-16 max-lg:px-6 mt-16"
+        className="max-w-screen-2xl px-16 pt-12 max-lg:px-6 mt-16"
       >
         <h2 className="font-bold text-white text-5xl">Our Product</h2>
         <Swiper className="relative w-full h-full mt-20 flex">
-          <SwiperSlide>
-            <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
-              <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                <h2 className="text-5xl text-white font-bold">
-                  Semi Husked Coconut
-                </h2>
-                <p className="mt-8 text-lg">
-                  We proudly present one of Indonesi's finest natural resources.
-                  Freshly hand-picked within 60 days, almost entirely light
-                  brown colored, enriched by the sweetness and thickness of
-                  coconut flesh; are some of the portrayals of our superior
-                  commodity, especially in Sumatra Island.
-                </p>
-                <div className="inline-flex mt-6">
-                  <a
-                    href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
-                    target="_blank"
-                    className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
-                  >
-                    <span className="flex text-white text-bold">
-                      <FontAwesomeIcon
-                        icon={faWhatsapp}
-                        color="white"
-                        className="w-4 mr-2"
-                      />
-                      Contact Us
-                    </span>
-                  </a>
+          {productAPI.map((data, id) => (
+            <SwiperSlide key={id}>
+              <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
+                <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
+                  <h2 className="text-5xl text-white font-bold">
+                    {data.title}
+                  </h2>
+                  <p className="mt-8 text-lg">
+                    <BlockContent blocks={data.description} />
+                  </p>
+                  <div className="inline-flex mt-6">
+                    <a
+                      href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
+                      target="_blank"
+                      className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
+                    >
+                      <span className="flex text-white text-bold">
+                        <FontAwesomeIcon
+                          icon={faWhatsapp}
+                          color="white"
+                          className="w-4 mr-2"
+                        />
+                        Contact Us
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div className="w-1/2 max-lg:w-full h-30rem max-lg:h-30rem">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
+                      alt="Delightful"
+                      layout="fill"
+                      objectFit="contain"
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="w-1/2 max-lg:w-full h-30rem max-lg:h-30rem">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                    alt="Delightful"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
-              <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                <h2 className="text-5xl text-white font-bold">
-                  Semi Husked Coconut
-                </h2>
-                <p className="mt-8 text-lg">
-                  We proudly present one of Indonesia's finest natural
-                  resources. Freshly hand-picked within 60 days, almost entirely
-                  light brown colored, enriched by the sweetness and thickness
-                  of coconut flesh; are some of the portrayals of our superior
-                  commodity, especially in Sumatra Island.
-                </p>
-                <div className="inline-flex mt-6">
-                  <a
-                    href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
-                    target="_blank"
-                    className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
-                  >
-                    <span className="flex text-white text-bold">
-                      <FontAwesomeIcon
-                        icon={faWhatsapp}
-                        color="white"
-                        className="w-4 mr-2"
-                      />
-                      Contact Us
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div className="w-1/2 max-lg:w-full h-30rem max-lg:h-30rem">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                    alt="Delightful"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
-              <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                <h2 className="text-5xl text-white font-bold">
-                  Semi Husked Coconut
-                </h2>
-                <p className="mt-8 text-lg">
-                  We proudly present one of Indonesia's finest natural
-                  resources. Freshly hand-picked within 60 days, almost entirely
-                  light brown colored, enriched by the sweetness and thickness
-                  of coconut flesh; are some of the portrayals of our superior
-                  commodity, especially in Sumatra Island.
-                </p>
-                <div className="inline-flex mt-6">
-                  <a
-                    href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
-                    target="_blank"
-                    className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
-                  >
-                    <span className="flex text-white text-bold">
-                      <FontAwesomeIcon
-                        icon={faWhatsapp}
-                        color="white"
-                        className="w-4 mr-2"
-                      />
-                      Contact Us
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div className="w-1/2 max-lg:w-full h-30rem max-lg:h-30rem">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                    alt="Delightful"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div
@@ -474,59 +324,38 @@ export default function Home() {
         className="px-20 max-lg:px-6 py-12 w-full h-full max-w-screen-2xl"
       >
         <h2 className="text-center text-white text-4xl">Our Teams</h2>
-        <div className="flex max-lg:flex-col mt-16 justify-center space-x-12 max-lg:space-x-0 max-lg:space-y-12 w-full">
-          <div className="flex flex-col items-center justify-center w-56 max-lg:w-full h-64">
-            <div className="relative overflow-hidden w-36 h-36 rounded-full">
-              <Image
-                src="/placeholder/team1.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top"
-              />
-            </div>
-            <span className="font-bold mt-6 text-white text-lg">
-              Muhammad Sartibi
-            </span>
-            <span>Founder</span>
-            <a
-              href="https://instagram.com/sartibimuhammad"
-              target="_blank"
-              className="rounded-full p-2 mt-3 bg-coklat"
+        <div className="flex flex-wrap max-lg:flex-col mt-16 justify-center space-x-12 max-lg:space-x-0 max-lg:space-y-12 w-full">
+          {teamAPI.map((data, id) => (
+            <div
+              key={id}
+              className="flex flex-col items-center justify-center w-56 max-lg:w-full h-64"
             >
-              <FontAwesomeIcon
-                icon={faInstagram}
-                color="white"
-                className="w-4"
-              />
-            </a>
-          </div>
-          <div className="flex flex-col items-center justify-center w-56 max-lg:w-full h-64">
-            <div className="relative overflow-hidden w-36 h-36 rounded-full">
-              <Image
-                src="/placeholder/team2.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top"
-              />
+              <div className="relative overflow-hidden w-36 h-36 rounded-full">
+                <Image
+                  src={urlFor(data.image).url()}
+                  alt="Agraskara"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="top"
+                />
+              </div>
+              <span className="font-bold mt-6 text-white text-lg">
+                {data.name}
+              </span>
+              <span>{data.position}</span>
+              <a
+                href={data.instagram}
+                target="_blank"
+                className="rounded-full p-2 mt-3 bg-coklat"
+              >
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  color="white"
+                  className="w-4"
+                />
+              </a>
             </div>
-            <span className="font-bold mt-6 text-white text-lg">
-              Haikal Fikri
-            </span>
-            <span>Co Founder</span>
-            <a
-              href="https://instagram.com/haikall.fkr"
-              target="_blank"
-              className="rounded-full p-2 mt-3 bg-coklat"
-            >
-              <FontAwesomeIcon
-                icon={faInstagram}
-                color="white"
-                className="w-4"
-              />
-            </a>
-          </div>
+          ))}
         </div>
       </div>
       <div
@@ -542,76 +371,18 @@ export default function Home() {
           slidesPerView={useMediaQuery('(max-width: 900px)') ? 1 : 3}
           className="relative mt-12 w-full h-30rem max-lg:h-40rem max-md:h-30rem max-lg:rounded-2xl max-lg:overflow-hidden"
         >
-          <SwiperSlide>
-            <div className="relative w-full max-lg:w-full h-full rounded-2xl max-lg:rounded-none overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-full max-lg:w-full h-full rounded-2xl max-lg:rounded-none overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-full max-lg:w-full h-full rounded-2xl max-lg:rounded-none overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-full max-lg:w-full h-full rounded-2xl max-lg:rounded-none overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
-              <Image
-                src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
-                alt="Delightful"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
+          {galleryAPI.map((data, id) => (
+            <SwiperSlide key={id}>
+              <div className="relative w-full max-lg:w-full h-full rounded-2xl max-lg:rounded-none overflow-hidden">
+                <Image
+                  src={urlFor(data.image).url()}
+                  alt="Agraaskara"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div
@@ -622,12 +393,11 @@ export default function Home() {
         <div className="flex flex-col justify-start space-y-4 mt-5">
           <div className="">
             <span className="block max-w-sm">
-              Jalan Moch Kahfi II No.23, Cipedak, Jagakarsa, Jakarta Selatan
-              12630
+              <BlockContent blocks={contact.alamat} />
             </span>
           </div>
           <div className="">
-            <span>+62 812 7382 8537</span>
+            <span>{contact.notelpon}</span>
           </div>
           <div className="">
             <span>info@orfalandcoco.com</span>
@@ -651,4 +421,39 @@ export default function Home() {
       </a>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const homeAPI = await client.fetch(`
+  *[_type == "home"]
+  `)
+  const aboutAPI = await client.fetch(`
+  *[_type == "about"]
+  `)
+  const serviceAPI = await client.fetch(`
+                    *[_type == "service"]
+                    `)
+  const productAPI = await client.fetch(`
+                    *[_type == "product"]
+                    `)
+  const teamAPI = await client.fetch(`
+                    *[_type == "team"]
+                    `)
+  const galleryAPI = await client.fetch(`
+                    *[_type == "gallery"]
+                    `)
+  const contactAPI = await client.fetch(`
+                    *[_type == "contact"]
+                    `)
+  return {
+    props: {
+      homeAPI,
+      aboutAPI,
+      serviceAPI,
+      productAPI,
+      teamAPI,
+      galleryAPI,
+      contactAPI,
+    },
+  }
 }

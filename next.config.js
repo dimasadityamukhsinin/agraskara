@@ -12,6 +12,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['orfalandcoco.com']
+    domains: ['cdn.sanity.io', 'orfalandcoco.com']
   }
 };

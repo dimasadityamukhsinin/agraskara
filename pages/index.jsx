@@ -10,6 +10,8 @@ import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // install Swiper modules
 SwiperCore.use([EffectFade, Navigation, Pagination])
@@ -105,7 +107,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('home')}
-                  className="block py-2 pr-4 pl-3 rounded md:bg-transparent md:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                   aria-current="page"
                 >
                   Home
@@ -114,7 +116,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('about')}
-                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   About
                 </a>
@@ -122,7 +124,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('service')}
-                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   Services
                 </a>
@@ -130,7 +132,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('product')}
-                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   Product
                 </a>
@@ -138,7 +140,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('team')}
-                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   Team
                 </a>
@@ -146,7 +148,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('gallery')}
-                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   Gallery
                 </a>
@@ -154,7 +156,7 @@ export default function Home() {
               <li>
                 <a
                   onClick={() => scrolltoview('contact')}
-                  className="block py-2 pr-4 pl-3 hover:text-white md:p-0"
+                  className="block cursor-pointer py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   Contact
                 </a>
@@ -177,10 +179,16 @@ export default function Home() {
             fertile soil and abundant natural resources from various sectors.
           </p>
           <div className="w-full flex space-x-4 mt-6">
-            <a className="rounded-full text-black py-2.5 px-10 bg-white">
+            <a
+              onClick={() => scrolltoview('about')}
+              className="rounded-full cursor-pointer text-white py-2.5 px-10 bg-coklat"
+            >
               About Us
             </a>
-            <a className="rounded-full text-black py-2.5 px-10 bg-white">
+            <a
+              onClick={() => scrolltoview('product')}
+              className="rounded-full cursor-pointer text-white py-2.5 px-10 bg-coklat"
+            >
               Our Product
             </a>
           </div>
@@ -340,15 +348,26 @@ export default function Home() {
                   Semi Husked Coconut
                 </h2>
                 <p className="mt-8 text-lg">
-                  We proudly present one of Indonesi's finest natural
-                  resources. Freshly hand-picked within 60 days, almost entirely
-                  light brown colored, enriched by the sweetness and thickness
-                  of coconut flesh; are some of the portrayals of our superior
+                  We proudly present one of Indonesi's finest natural resources.
+                  Freshly hand-picked within 60 days, almost entirely light
+                  brown colored, enriched by the sweetness and thickness of
+                  coconut flesh; are some of the portrayals of our superior
                   commodity, especially in Sumatra Island.
                 </p>
                 <div className="inline-flex mt-6">
-                  <a className="rounded-full text-black py-2.5 px-10 bg-white">
-                    Contact Us
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
+                    target="_blank"
+                    className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
+                  >
+                    <span className="flex text-white text-bold">
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        color="white"
+                        className="w-4 mr-2"
+                      />
+                      Contact Us
+                    </span>
                   </a>
                 </div>
               </div>
@@ -378,8 +397,19 @@ export default function Home() {
                   commodity, especially in Sumatra Island.
                 </p>
                 <div className="inline-flex mt-6">
-                  <a className="rounded-full text-black py-2.5 px-10 bg-white">
-                    Contact Us
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
+                    target="_blank"
+                    className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
+                  >
+                    <span className="flex text-white text-bold">
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        color="white"
+                        className="w-4 mr-2"
+                      />
+                      Contact Us
+                    </span>
                   </a>
                 </div>
               </div>
@@ -409,8 +439,19 @@ export default function Home() {
                   commodity, especially in Sumatra Island.
                 </p>
                 <div className="inline-flex mt-6">
-                  <a className="rounded-full text-black py-2.5 px-10 bg-white">
-                    Contact Us
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
+                    target="_blank"
+                    className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
+                  >
+                    <span className="flex text-white text-bold">
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        color="white"
+                        className="w-4 mr-2"
+                      />
+                      Contact Us
+                    </span>
                   </a>
                 </div>
               </div>
@@ -572,6 +613,20 @@ export default function Home() {
           <div className="flex space-x-4"></div>
         </div>
       </div>
+      <a
+        href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
+        target="_blank"
+        className="fixed bottom-0 right-0 mr-4 mb-4 z-10 w-36 h-10 bg-coklat rounded-sm flex justify-center items-center"
+      >
+        <span className="flex text-white text-bold">
+          <FontAwesomeIcon
+            icon={faWhatsapp}
+            color="white"
+            className="w-4 mr-2"
+          />
+          Contact Us
+        </span>
+      </a>
     </div>
   )
 }

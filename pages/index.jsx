@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 // install Swiper modules
 SwiperCore.use([EffectFade, Navigation, Pagination])
@@ -489,6 +489,17 @@ export default function Home() {
               Muhammad Sartibi
             </span>
             <span>Founder</span>
+            <a
+              href="https://instagram.com/sartibimuhammad"
+              target="_blank"
+              className="rounded-full p-2 mt-3 bg-coklat"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                color="white"
+                className="w-4"
+              />
+            </a>
           </div>
           <div className="flex flex-col items-center justify-center w-56 max-lg:w-full h-64">
             <div className="relative overflow-hidden w-36 h-36 rounded-full">
@@ -504,6 +515,17 @@ export default function Home() {
               Haikal Fikri
             </span>
             <span>Co Founder</span>
+            <a
+              href="https://instagram.com/haikall.fkr"
+              target="_blank"
+              className="rounded-full p-2 mt-3 bg-coklat"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                color="white"
+                className="w-4"
+              />
+            </a>
           </div>
         </div>
       </div>

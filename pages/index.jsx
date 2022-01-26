@@ -121,7 +121,7 @@ export default function Home() {
               </li>
               <li>
                 <a
-                  onClick={() => scrolltoview('services')}
+                  onClick={() => scrolltoview('service')}
                   className="block py-2 pr-4 pl-3 hover:text-coklat md:p-0"
                 >
                   Services

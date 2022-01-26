@@ -36,12 +36,12 @@ export default function Home() {
   }
 
   useEffect(() => {
-    navMobile();
+    navMobile()
     window.addEventListener('resize', navMobile)
     return () => {
       window.removeEventListener('resize', navMobile)
     }
-  },[])
+  }, [])
   return (
     <div>
       <NextSeo
@@ -163,7 +163,10 @@ export default function Home() {
           </div>
         </div>
       </nav>
-      <div data-slug="home" className="max-w-screen-2xl space-x-6 max-lg:space-x-0 px-12 max-lg:px-6 pt-28 max-lg:pt-24 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10">
+      <div
+        data-slug="home"
+        className="max-w-screen-2xl space-x-6 max-lg:space-x-0 px-12 max-lg:px-6 pt-28 max-lg:pt-24 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
+      >
         <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
           <h1 className="text-5xl text-coklat font-bold">
             One stop solution for the finest coconut product from Indonesia
@@ -221,7 +224,10 @@ export default function Home() {
           </Swiper>
         </div>
       </div>
-      <div data-slug="about" className="max-w-screen-2xl px-12 max-lg:px-6 pt-12 space-x-6 max-lg:space-x-0 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10">
+      <div
+        data-slug="about"
+        className="max-w-screen-2xl px-12 max-lg:px-6 pt-12 space-x-6 max-lg:space-x-0 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
+      >
         <div className="w-1/2 max-lg:w-full h-full flex justify-center">
           <div className="relative w-96 max-lg:w-full h-full max-lg:h-45rem max-lg:30rem rounded-2xl overflow-hidden">
             <Image
@@ -250,7 +256,10 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div data-slug="service" className="px-20 max-lg:px-6 pt-12 w-full h-full max-w-screen-2xl">
+      <div
+        data-slug="service"
+        className="px-20 max-lg:px-6 pt-12 w-full h-full max-w-screen-2xl"
+      >
         <h2 className="text-center text-coklat text-4xl">Our Key Feature</h2>
         <div className="w-full mt-20 grid max-lg:flex max-lg:flex-col grid-cols-2 gap-20">
           <div className="w-full flex flex-col text-center items-center h-auto">
@@ -318,7 +327,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div data-slug="product" className="max-w-screen-2xl px-16 max-lg:px-6 mt-16">
+      <div
+        data-slug="product"
+        className="max-w-screen-2xl px-16 max-lg:px-6 mt-16"
+      >
         <h2 className="font-bold text-coklat text-5xl">Our Product</h2>
         <Swiper className="relative w-full h-full mt-20 flex">
           <SwiperSlide>
@@ -328,7 +340,7 @@ export default function Home() {
                   Semi Husked Coconut
                 </h2>
                 <p className="mt-8 text-lg">
-                  We proudly present one of Indonesia's finest natural
+                  We proudly present one of Indonesi's finest natural
                   resources. Freshly hand-picked within 60 days, almost entirely
                   light brown colored, enriched by the sweetness and thickness
                   of coconut flesh; are some of the portrayals of our superior
@@ -416,7 +428,10 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div data-slug="team" className="px-20 max-lg:px-6 py-12 w-full h-full max-w-screen-2xl">
+      <div
+        data-slug="team"
+        className="px-20 max-lg:px-6 py-12 w-full h-full max-w-screen-2xl"
+      >
         <h2 className="text-center text-coklat text-4xl">Our Teams</h2>
         <div className="flex max-lg:flex-col mt-16 justify-center space-x-12 max-lg:space-x-0 max-lg:space-y-12 w-full">
           <div className="flex flex-col items-center justify-center w-56 max-lg:w-full h-64">
@@ -451,7 +466,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div data-slug="gallery" className="px-20 max-lg:px-6 pt-12 pb-24 w-full h-full max-w-screen-2xl">
+      <div
+        data-slug="gallery"
+        className="px-20 max-lg:px-6 pt-12 pb-24 w-full h-full max-w-screen-2xl"
+      >
         <h2 className="text-center text-coklat text-4xl">Gallery</h2>
         <h3 className="text-center font-bold text-coklat text-4xl">
           Work Documentation
@@ -533,7 +551,10 @@ export default function Home() {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div data-slug="contact" className="max-w-screen-2xl px-12 py-9 bg-hitam text-white">
+      <div
+        data-slug="contact"
+        className="max-w-screen-2xl px-12 py-9 bg-hitam text-white"
+      >
         <span className="font-bold text-coklat text-2xl">Contacts</span>
         <div className="flex flex-col justify-start space-y-4 mt-5">
           <div className="">

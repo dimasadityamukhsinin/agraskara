@@ -27,10 +27,12 @@ export default function Home({
   teamAPI,
   galleryAPI,
   contactAPI,
+  settingAPI,
 }) {
   const [home] = homeAPI
   const [about] = aboutAPI
   const [contact] = contactAPI
+  const [setting] = settingAPI
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const canonicalLink = `https://website.site${
@@ -61,36 +63,39 @@ export default function Home({
   return (
     <div>
       <NextSeo
-        title="Agraskara"
-        description="Tes"
+        title={setting.title}
+        description={setting.seo && setting.seo.seo_description}
         canonical={canonicalLink}
         openGraph={{
           url: canonicalLink,
-          title: 'Agraskara',
-          description: 'tes',
-          // images: [
-          //   {
-          //     url: image,
-          //     alt: image_alt,
-          //   },
-          // ],
-          site_name: 'Agraskara',
+          title: setting.title,
+          description: setting.seo && setting.seo.seo_description,
+          images: [
+            {
+              url: setting.seo && setting.seo.seo_image,
+              alt: setting.title,
+            },
+          ],
+          site_name: setting.title,
         }}
         twitter={{
-          site: 'Agraskara',
+          site: setting.title,
           cardType: 'summary_large_image',
         }}
       />
       <Head>
-        <meta name="keywords" content="tes" />
+        <meta
+          name="keywords"
+          content={setting.seo && setting.seo.seo_keywords}
+        />
       </Head>
       <nav className="fixed z-10 w-full bg-hitam border-gray-200 px-10 max-lg:px-6 py-5 max-w-screen-2xl">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
-          <a href="#" className="flex">
+          <div className="flex">
             <span className="self-center text-lg font-semibold whitespace-nowrap text-white">
               AGRASKARA
             </span>
-          </a>
+          </div>
           <div className="max-md:flex items-center md:order-2 hidden">
             <button
               type="button"
@@ -214,7 +219,7 @@ export default function Home({
                 <div className="w-full h-full">
                   <Image
                     src={urlFor(data).url()}
-                    alt="Agraskara"
+                    alt={setting.title}
                     layout="fill"
                     objectFit="cover"
                   />
@@ -232,7 +237,7 @@ export default function Home({
           <div className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden">
             <Image
               src={urlFor(about.image).url()}
-              alt="Agraskara"
+              alt={setting.title}
               layout="fill"
               objectFit="cover"
             />
@@ -333,7 +338,7 @@ export default function Home({
               <div className="relative overflow-hidden w-36 h-36 rounded-full">
                 <Image
                   src={urlFor(data.image).url()}
-                  alt="Agraskara"
+                  alt={setting.title}
                   layout="fill"
                   objectFit="cover"
                   objectPosition="top"
@@ -387,23 +392,26 @@ export default function Home({
       </div>
       <div
         data-slug="contact"
-        className="max-w-screen-2xl px-12 py-9 bg-hitam text-white"
+        className="max-w-screen-2xl px-12 py-9 flex justify-between bg-hitam text-white"
       >
-        <span className="font-bold text-white text-2xl">Contacts</span>
-        <div className="flex flex-col justify-start space-y-4 mt-5">
-          <div className="">
-            <span className="block max-w-sm">
-              <BlockContent blocks={contact.alamat} />
-            </span>
+        <div className="flex flex-col">
+          <span className="font-bold text-white text-2xl">Contacts</span>
+          <div className="flex flex-col justify-start space-y-4 mt-5">
+            <div className="">
+              <span className="block max-w-sm">
+                <BlockContent blocks={contact.alamat} />
+              </span>
+            </div>
+            <div className="">
+              <span>{contact.notelpon}</span>
+            </div>
+            <div className="">
+              <span>info@orfalandcoco.com</span>
+            </div>
+            <div className="flex space-x-4"></div>
           </div>
-          <div className="">
-            <span>{contact.notelpon}</span>
-          </div>
-          <div className="">
-            <span>info@orfalandcoco.com</span>
-          </div>
-          <div className="flex space-x-4"></div>
         </div>
+        <img className='w-44' src={urlFor(setting.logo).url()} alt={setting.title} />
       </div>
       <a
         href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
@@ -445,6 +453,9 @@ export async function getStaticProps() {
   const contactAPI = await client.fetch(`
                     *[_type == "contact"]
                     `)
+  const settingAPI = await client.fetch(`
+                    *[_type == "setting"]
+                    `)
   return {
     props: {
       homeAPI,
@@ -454,6 +465,7 @@ export async function getStaticProps() {
       teamAPI,
       galleryAPI,
       contactAPI,
+      settingAPI,
     },
   }
 }

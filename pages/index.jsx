@@ -394,7 +394,7 @@ export default function Home({
       </div>
       <div
         data-slug="contact"
-        className="max-w-screen-2xl px-12 py-9 flex justify-between bg-hitam text-white"
+        className="max-w-screen-2xl px-12 py-9 flex max-lg:flex-col justify-between max-lg:justify-center max-lg:space-y-4 bg-hitam text-white"
       >
         <div className="flex flex-col">
           <span className="font-bold text-white text-2xl">Contacts</span>
@@ -413,7 +413,7 @@ export default function Home({
             <div className="flex space-x-4"></div>
           </div>
         </div>
-        <img className='w-44' src={urlFor(setting.logo).url()} alt={setting.title} />
+        <img className='w-44 max-lg:w-full max-lg:max-w-xs' src={urlFor(setting.logo).url()} alt={setting.title} />
       </div>
       <a
         href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"

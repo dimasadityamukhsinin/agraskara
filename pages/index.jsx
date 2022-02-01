@@ -249,15 +249,12 @@ export default function Home({
         data-slug="about"
         className="max-w-screen-2xl px-12 max-lg:px-6 pt-12 space-x-6 max-lg:space-x-0 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
       >
-        <div className="w-1/2 max-lg:w-full h-full flex justify-center">
-          <div className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden">
-            <Image
-              src={urlFor(about.image).url()}
-              alt={setting.title}
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
+        <div className="w-1/2 max-lg:w-full h-full flex justify-center items-center bg-hitam rounded-2xl">
+          <img
+            className="w-full"
+            src={urlFor(setting.logo).url()}
+            alt={setting.title}
+          />
         </div>
         <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
           <h2 className="text-5xl text-white font-bold">About Us</h2>
@@ -297,47 +294,45 @@ export default function Home({
         className="max-w-screen-2xl w-full px-16 pt-12 max-lg:px-6 mt-16"
       >
         <h2 className="font-bold text-white text-5xl">Our Product</h2>
-        <Swiper autoplay={true} className="relative w-full h-full mt-20 flex">
+        <div className="grid grid-cols-3 gap-12 mt-10">
           {productAPI.map((data, id) => (
-            <SwiperSlide key={id}>
-              <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
-                <div className="w-1/2 max-lg:w-full pt-8 max-w-xl max-lg:max-w-none h-full max-lg:h-full flex flex-col">
-                  <h2 className="text-5xl text-white font-bold">
-                    {data.title}
-                  </h2>
-                  <p className="mt-8 text-lg">
-                    <BlockContent blocks={data.description} />
-                  </p>
-                  <a
-                    href={contact.whatsapp}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-36 h-10 mt-6 bg-coklat rounded-full flex justify-center items-center"
-                  >
-                    <span className="flex text-white text-bold">
-                      <FontAwesomeIcon
-                        icon={faWhatsapp}
-                        color="white"
-                        className="w-4 mr-2"
-                      />
-                      Contact Us
-                    </span>
-                  </a>
-                </div>
-                <div className="w-1/2 max-lg:w-full h-30rem max-lg:h-30rem">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={urlFor(data.image).url()}
-                      alt="Delightful"
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  </div>
-                </div>
+            <div
+              className="w-full flex items-center flex-col space-y-4"
+              key={id}
+            >
+              <div className="relative w-full h-96 rounded-2xl overflow-hidden">
+                <Image
+                  src={urlFor(data.image).url()}
+                  alt="Delightful"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
               </div>
-            </SwiperSlide>
+              <h2 className="text-3xl text-center  text-white font-bold">
+                {data.title}
+              </h2>
+              <p className="text-lg text-justify ">
+                <BlockContent blocks={data.description} />
+              </p>
+              <a
+                href={contact.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="w-36 h-10 mt-6 bg-coklat rounded-full flex justify-center items-center"
+              >
+                <span className="flex text-white text-bold">
+                  <FontAwesomeIcon
+                    icon={faWhatsapp}
+                    color="white"
+                    className="w-4 mr-2"
+                  />
+                  Contact Us
+                </span>
+              </a>
+            </div>
           ))}
-        </Swiper>
+        </div>
       </div>
       <div
         data-slug="team"

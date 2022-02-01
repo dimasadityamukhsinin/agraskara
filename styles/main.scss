@@ -4,9 +4,31 @@
 @import 'tailwindcss/utilities';
 
 body {
-    background-color: #3f40a5;
+    background-color: #6767A5;
 }
 
 * {
     @apply text-white
+}
+
+#home {
+    @apply relative;
+    top: -20px;
+    min-height: 110vh;
+    background-image: url("/placeholder/background.jpg");
+    background-position: 50% 0!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#home::before {
+    background-color: #6767A5;
+    opacity: 0.4;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }

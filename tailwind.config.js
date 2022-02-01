@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         'hitam': '#222',
         'coklat': '#c49b66',
+        'biru': "#6767A5"
       },
       height: {
         '30rem': '30rem',

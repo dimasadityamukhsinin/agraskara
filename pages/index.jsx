@@ -11,10 +11,16 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import {
+  faInstagram,
+  faWhatsapp,
+  faLinkedin,
+  faFacebook,
+} from '@fortawesome/free-brands-svg-icons'
 import client from '@/helpers/sanity/client'
 import BlockContent from '@sanity/block-content-to-react'
 import urlFor from '@/helpers/sanity/urlFor'
+import getYoutube from '@/helpers/functional/getYoutube'
 
 // install Swiper modules
 SwiperCore.use([EffectFade, Navigation, Pagination])
@@ -61,7 +67,7 @@ export default function Home({
     }
   }, [])
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <NextSeo
         title={setting.title}
         description={setting.seo && setting.seo.seo_description}
@@ -89,8 +95,8 @@ export default function Home({
           content={setting.seo && setting.seo.seo_keywords}
         />
       </Head>
-      <nav className="fixed z-10 w-full bg-hitam border-gray-200 px-10 max-lg:px-6 py-5 max-w-screen-2xl">
-        <div className="container flex flex-wrap justify-between items-center mx-auto">
+      <nav className="fixed z-20 w-full bg-hitam border-gray-200 px-10 max-lg:px-6 py-5">
+        <div className="container max-w-screen-2xl flex flex-wrap justify-between items-center mx-auto">
           <div className="flex">
             <span className="self-center text-lg font-semibold whitespace-nowrap text-white">
               AGRASKARA
@@ -185,48 +191,58 @@ export default function Home({
         </div>
       </nav>
       <div
+        id="home"
         data-slug="home"
-        className="max-w-screen-2xl space-x-6 max-lg:space-x-0 px-12 max-lg:px-6 pt-28 max-lg:pt-24 pb-12 w-full h-screen max-lg:h-auto flex max-lg:flex-col max-lg:space-y-10"
+        className="flex w-full justify-center items-center"
       >
-        <div className="w-1/2 max-lg:w-full pt-8 max-lg:pt-0 max-w-xl max-lg:max-w-none h-full flex flex-col">
-          <h1 className="text-5xl text-white font-bold">{home.title}</h1>
-          <p className="mt-8 text-lg text-white">
+        <div className="relative z-10 max-w-xl w-full text-center">
+          <h1 className="text-5xl leading-snug text-white font-bold">
             <BlockContent blocks={home.description} />
-          </p>
-          <div className="w-full flex space-x-4 mt-6">
-            <a
-              onClick={() => scrolltoview('about')}
-              className="rounded-full cursor-pointer text-white py-2.5 px-10 bg-coklat"
-            >
-              About Us
-            </a>
-            <a
-              onClick={() => scrolltoview('product')}
-              className="rounded-full cursor-pointer text-white py-2.5 px-10 bg-coklat"
-            >
-              Our Product
-            </a>
+          </h1>
+          <div className="flex justify-center space-x-6 mt-3">
+            {contact.instagram && (
+              <a
+                href={contact.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full inline-block p-2 bg-coklat"
+              >
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  color="white"
+                  className="w-6"
+                />
+              </a>
+            )}
+            {contact.facebook && (
+              <a
+                href={contact.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full inline-block p-2 bg-coklat"
+              >
+                <FontAwesomeIcon
+                  icon={faFacebook}
+                  color="white"
+                  className="w-6"
+                />
+              </a>
+            )}
+            {contact.linkedin && (
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full inline-block p-2 bg-coklat"
+              >
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  color="white"
+                  className="w-6"
+                />
+              </a>
+            )}
           </div>
-        </div>
-        <div className="w-1/2 max-lg:w-full h-full flex justify-center">
-          <Swiper
-            effect={'fade'}
-            navigation={true}
-            className="relative w-96 max-lg:w-full h-full max-lg:h-40rem max-lg:30rem rounded-2xl overflow-hidden"
-          >
-            {home.image.map((data, id) => (
-              <SwiperSlide key={id}>
-                <div className="w-full h-full">
-                  <Image
-                    src={urlFor(data).url()}
-                    alt={setting.title}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
         </div>
       </div>
       <div
@@ -278,10 +294,10 @@ export default function Home({
       </div>
       <div
         data-slug="product"
-        className="max-w-screen-2xl px-16 pt-12 max-lg:px-6 mt-16"
+        className="max-w-screen-2xl w-full px-16 pt-12 max-lg:px-6 mt-16"
       >
         <h2 className="font-bold text-white text-5xl">Our Product</h2>
-        <Swiper className="relative w-full h-full mt-20 flex">
+        <Swiper autoplay={true} className="relative w-full h-full mt-20 flex">
           {productAPI.map((data, id) => (
             <SwiperSlide key={id}>
               <div className="w-full flex max-lg:flex-col max-lg:space-y-8 space-x-6 max-lg:space-x-0">
@@ -292,28 +308,26 @@ export default function Home({
                   <p className="mt-8 text-lg">
                     <BlockContent blocks={data.description} />
                   </p>
-                  <div className="inline-flex mt-6">
-                    <a
-                      href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-36 h-10 bg-coklat rounded-full flex justify-center items-center"
-                    >
-                      <span className="flex text-white text-bold">
-                        <FontAwesomeIcon
-                          icon={faWhatsapp}
-                          color="white"
-                          className="w-4 mr-2"
-                        />
-                        Contact Us
-                      </span>
-                    </a>
-                  </div>
+                  <a
+                    href={contact.whatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-36 h-10 mt-6 bg-coklat rounded-full flex justify-center items-center"
+                  >
+                    <span className="flex text-white text-bold">
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        color="white"
+                        className="w-4 mr-2"
+                      />
+                      Contact Us
+                    </span>
+                  </a>
                 </div>
                 <div className="w-1/2 max-lg:w-full h-30rem max-lg:h-30rem">
                   <div className="relative w-full h-full">
                     <Image
-                      src="https://orfalandcoco.com/wp-content/uploads/2021/10/2-770x1024.jpg"
+                      src={urlFor(data.image).url()}
                       alt="Delightful"
                       layout="fill"
                       objectFit="contain"
@@ -349,18 +363,36 @@ export default function Home({
                 {data.name}
               </span>
               <span>{data.position}</span>
-              <a
-                href={data.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full p-2 mt-3 bg-coklat"
-              >
-                <FontAwesomeIcon
-                  icon={faInstagram}
-                  color="white"
-                  className="w-4"
-                />
-              </a>
+              <div className="flex space-x-4">
+                {data.instagram && (
+                  <a
+                    href={data.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full p-2 mt-3 bg-coklat"
+                  >
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      color="white"
+                      className="w-4"
+                    />
+                  </a>
+                )}
+                {data.linkedin && (
+                  <a
+                    href=""
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full p-2 mt-3 bg-coklat"
+                  >
+                    <FontAwesomeIcon
+                      icon={faLinkedin}
+                      color="white"
+                      className="w-4"
+                    />
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -394,29 +426,45 @@ export default function Home({
       </div>
       <div
         data-slug="contact"
-        className="max-w-screen-2xl px-12 py-9 flex max-lg:flex-col justify-between max-lg:justify-center max-lg:space-y-4 bg-hitam text-white"
+        id="contact"
+        className="w-full px-12 bg-hitam text-white"
       >
-        <div className="flex flex-col">
-          <span className="font-bold text-white text-2xl">Contacts</span>
-          <div className="flex flex-col justify-start space-y-4 mt-5">
-            <div className="">
-              <span className="block max-w-sm">
-                <BlockContent blocks={contact.alamat} />
-              </span>
+        <div className="grid grid-cols-3 max-lg:grid-cols-1 gap-6 w-full max-w-screen-2xl">
+          <div className="flex flex-col py-9 max-lg:pb-0">
+            <span className="font-bold text-white text-2xl">Contacts</span>
+            <div className="flex flex-col justify-start space-y-4 mt-5">
+              <div className="">
+                <span className="block max-w-sm">
+                  <BlockContent blocks={contact.alamat} />
+                </span>
+              </div>
+              <div className="">
+                <span>{contact.notelpon}</span>
+              </div>
+              <div className="">
+                <span>{contact.email}</span>
+              </div>
             </div>
-            <div className="">
-              <span>{contact.notelpon}</span>
-            </div>
-            <div className="">
-              <span>info@orfalandcoco.com</span>
-            </div>
-            <div className="flex space-x-4"></div>
+          </div>
+          <iframe
+            className="w-full h-full max-lg:h-96 py-9 max-lg:py-0 max-lg:bg-hitam bg-biru"
+            src={
+              'https://www.youtube.com/embed/' +
+              getYoutube(contact.youtube) +
+              '?rel=0&modestbranding=1'
+            }
+          ></iframe>
+          <div className="w-full py-9 max-lg:py-0 flex justify-end max-lg:justify-center">
+            <img
+              className="w-44 max-lg:w-full max-lg:max-w-xs"
+              src={urlFor(setting.logo).url()}
+              alt={setting.title}
+            />
           </div>
         </div>
-        <img className='w-44 max-lg:w-full max-lg:max-w-xs' src={urlFor(setting.logo).url()} alt={setting.title} />
       </div>
       <a
-        href="https://api.whatsapp.com/send/?phone=6281261544201&text&app_absent=0"
+        href={contact.whatsapp}
         target="_blank"
         rel="noreferrer"
         className="fixed bottom-0 right-0 mr-4 mb-4 z-10 w-36 h-10 bg-coklat rounded-sm flex justify-center items-center"

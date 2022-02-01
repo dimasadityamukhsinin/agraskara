@@ -294,7 +294,7 @@ export default function Home({
         className="max-w-screen-2xl w-full px-16 pt-12 max-lg:px-6 mt-16"
       >
         <h2 className="font-bold text-white text-5xl">Our Product</h2>
-        <div className="grid grid-cols-3 gap-12 mt-10">
+        <div className="grid grid-cols-3 max-lg:grid-cols-1 gap-12 mt-10">
           {productAPI.map((data, id) => (
             <div
               className="w-full flex items-center flex-col space-y-4"

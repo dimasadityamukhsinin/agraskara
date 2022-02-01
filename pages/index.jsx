@@ -94,6 +94,34 @@ export default function Home({
           name="keywords"
           content={setting.seo && setting.seo.seo_keywords}
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* FAVICON  */}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1,viewport-fit=cover"
+        />
+        {/* FAVICON  */}
       </Head>
       <nav className="fixed z-20 w-full bg-hitam border-gray-200 px-10 max-lg:px-6 py-5">
         <div className="container max-w-screen-2xl flex flex-wrap justify-between items-center mx-auto">
@@ -293,7 +321,9 @@ export default function Home({
         data-slug="product"
         className="max-w-screen-2xl w-full px-16 pt-12 max-lg:px-6 mt-16"
       >
-        <h2 className="font-bold text-white text-5xl">Our Product</h2>
+        <h2 className="font-bold text-white text-center text-5xl">
+          Our Product
+        </h2>
         <div className="grid grid-cols-3 max-lg:grid-cols-1 gap-12 mt-10">
           {productAPI.map((data, id) => (
             <div
@@ -327,7 +357,7 @@ export default function Home({
                     color="white"
                     className="w-4 mr-2"
                   />
-                  Contact Us
+                  More Info
                 </span>
               </a>
             </div>
@@ -442,12 +472,14 @@ export default function Home({
             </div>
           </div>
           <iframe
-            className="w-full h-full max-lg:h-96 py-9 max-lg:py-0 max-lg:bg-hitam bg-biru"
+            className="w-full h-full object-cover max-lg:h-96 py-6 max-lg:py-0 max-lg:bg-hitam bg-biru"
             src={
               'https://www.youtube.com/embed/' +
               getYoutube(contact.youtube) +
               '?rel=0&modestbranding=1'
             }
+            width="100%"
+            height="100%"
           ></iframe>
           <div className="w-full py-9 max-lg:py-0 flex justify-end max-lg:justify-center">
             <img
